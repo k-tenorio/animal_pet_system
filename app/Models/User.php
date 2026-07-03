@@ -65,7 +65,7 @@ class User extends Authenticatable
     
     public function appointments()
     {
-        return $this->hasMany(SpayNeuterAppointment::class, 'user_id');
+        return $this->hasMany(Kapon::class, 'user_id');
     }
 
 }

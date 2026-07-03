@@ -38,6 +38,11 @@ class AdminAdoptionController extends Controller
                 $application->status = 'Approved';
                 $application->approved_by = Auth::id();
                 $application->save();
+                
+                // UPDATE ANIMAL STATUS TO ADOPTED
+                $application->animal->status = 'adopted';
+                $application->animal->save();
+                
                 // REJECT OTHER PENDING APPLICATIONS
                 AdoptionApplication::where('animal_id', $application->animal_id)
                     ->where('application_id', '!=', $application->application_id)
